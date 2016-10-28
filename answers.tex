@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{makeidx}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
 
 \author{Joel Bush, Jakob Meier, Pascal Oberholzer}
@@ -25,10 +26,16 @@
 		\end{itemize}
 	
 	\section*{3.}
-		The clock tick happens before sending the message. If we execute the tick after sending messages the order of the events of a process is not given anymore.
+		The clock tick happens before sending the message. If we execute the tick after sending messages the order of the events of a process is not given anymore. The problem occurs if we receive a message and send a message afterwards because the tick of the receive happens before the event and the tick of the send happens afterwards therefore they have the same timestamp and can't be ordered even though they happened on the same process.\\
+		Simply changing the order of the receiver's tick is not possible because then we can't guarantee the ordering of the send and receive event.
 	
 	\section*{4.}
+		\begin{figure}[H]
+			\centering
+			\includegraphics*[width=\textwidth]{A3_4_4.png}
+		\end{figure}
 	
 	\section*{5.}
+		Tobias Landes solved the problem of pruning the clocks in case of process terminations in the implementation of dynamic vector clocks.
 	
 \end{document}
